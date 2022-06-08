@@ -1,0 +1,29 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.wrapper{
+    text-align: center;
+}
+
+.display{
+    font-size: 70px;
+    margin-top: 25%;
+}
+
+.buttons{
+    margin-top: 10%;
+}
+
+.buttons button{
+    padding: 10px 10px 10px 10px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.buttons #startBtn{
+    background-color: green;
+    color: white;
+}
