@@ -15,22 +15,20 @@
         <body>
             <div class="wrapper" id="wrapper">
                 <div class="display">
-                    <span class="timerDisplay" id="timerHrs">00</span>:
-                    <span class="timerDisplay" id="timerMins">00</span>.
-                    <span class="timerDisplay" id="timerSec">00</span>
-
+                    <span id="timer">00:00.00</span>
                 </div>
     
                 <div class="buttons">
-                    <button type="button" id="lapBtn">Lap</button>
-                    <button type="button" id="resetBtn">Reset</button>
-                    <button type="button" id="startBtn" onclick="changeColor()">Start</button>
+                    <button type="button" class="reset" class="resetLap" onclick="resetLap()">Lap</button>
+                    <button type="button" class="start" class="startBtn" onclick="startStop()">Start</button>
                 </div>
     
-                <h1>Laps:</h1>
+                <!--<h1>Laps:</h1>-->
     
+                <!--replaced <p> with <ul>-->
                 <div id="laps">
-                    <p id="lapRecord"></p>
+                    <hr class="lapsBreak">
+                    <ul id="lapRecord"></ul>
                 </div>
             </div>
     

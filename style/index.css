@@ -1,31 +1,103 @@
 body{
-    background-color: black;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     color: white;
+    overflow: hidden;
 }
 
-.wrapper{
-    text-align: center;
+.wrapper {
+    display: flex;
+    height: 766px;
+    width: 390px;
+    border: 1px solid black;
+    border-radius: 1rem;
+    flex-direction: column;
+    background-color: black;
 }
 
 .display{
-    font-size: 70px;
-    margin-top: 25%;
+    flex: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display span{
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    font-size: 80px;
+    font-variant-numeric: tabular-nums;
 }
 
 .buttons{
-    margin-top: 10%;
+    flex: 10%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.buttons button{
-    padding: 10px 10px 10px 10px;
+.start {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: lighter;
+    margin-right: 5%;
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
-}
-
-.buttons #startBtn{
-    background-color: green;
-    color: white;
+    background-color: #145e26;
+    color: #30d158;
+    border: none;
+    box-shadow: 0 0 0 2px black, 0 0 0 4px #145e26;
 } 
 
-/*test*/
+.reset {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: lighter;
+    margin-left: 5%;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: #8e8e93;
+    color: white;
+    border: none;
+    box-shadow: 0 0 0 2px black, 0 0 0 4px #8e8e93;
+}
+
+.stop {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: lighter;
+    margin-right: 5%;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: #ff3b30;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 0 0 2px black, 0 0 0 4px #ff3b30;
+}
+
+#laps {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    flex: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: scroll;
+}
+
+.lapsBreak{
+        width: 90%;
+        padding: 0;
+        margin: 0;
+}
+
+
+
+

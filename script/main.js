@@ -1,28 +1,20 @@
 const lapBtn = document.getElementById('lapBtn');
-const timerSec = document.getElementById('timerSec');
-const timerMins = document.getElementById('timerMins');
-const timerHrs = document.getElementById('timerHrs');
 const startBtn = document.getElementById('startBtn');
 const resetBtn = document.getElementById('resetBtn');
 const lapRecord = document.getElementById('lapRecord');
 
-let hours = 0;
-let minutes = 0;
-let seconds = 0;
-
-let displaySec = seconds;
-let displayMins = minutes;
-let displayHours = hours;
-
+let [minutes, seconds, centi] = [0, 0, 0];
+let [lapMin, lapSec, lapCenti] = [0, 0, 0];
+let lapRound = null;
+let lapCounter = 1;
 let interval = null;
 
-let status = "stopped";
-
-let lapNow = null;
-
-//this works
-function start() {
-  seconds++;
+//this doesn't work anymore
+//i replaced all 3 spans with just one, so I need to get rid of centi, sec etc...
+const start = () => {
+  centi++;
+  if (centi < 10) displayCenti = "0" + centi.toString();
+  else displayCenti = centi;
 
   if (seconds < 10) displaySec = "0" + seconds.toString();
   else displaySec = seconds;
@@ -30,66 +22,68 @@ function start() {
   if (minutes < 10) displayMins = "0" + minutes.toString();
   else displayMins = minutes;
 
-  if (hours < 10) displayHours = "0" + hours.toString();
-  else displayHours = hours;
+  if (centi / 60 === 1) {
+    seconds++;
+    centi = 0;
 
-
-    if (seconds / 60 === 1) {
+  if (seconds / 60 === 1) {
       minutes++;
       seconds = 0;
-
-      if (minutes / 60 === 1) {
-        hours++;
-        minutes = 0;
-      }
     }
-
-
+  }
   timerSec.innerHTML = displaySec;
   timerMins.innerHTML = displayMins;
-  timerHrs.innerHTML = displayHours;
-
+  timerCenti.innerHTML = displayCenti;
 }
 
-//find a way to replace status keywords to a non-deprecated one
-function startStop() {
-  if (status === "stopped") {
-    interval = setInterval(start, 10);
-    startBtn.innerHTML = "Stop";
-    status = "started";
-  } else {
-    clearInterval(interval);
-    startBtn.innerHTML = "Start";
-    status = "stopped";
+const startStop = () => {
+  startStopBtn = document.getElementById("startBtn");
+  startStopTxt = startStopBtn.innerText;
+  resetLapBtn = document.getElementById("lapBtn");
+  if (startStopTxt === "Stop") {    
+      startStopBtn.className = "start";
+      startStopBtn.innerText = "Start";
+      resetLapBtn.innerText = "Reset";
+  } else if (startStopTxt === "Start") {
+      startStopBtn.className = "stop";
+      startStopBtn.innerText = "Stop";
+      resetLapBtn.innerText = "Lap";
+      start();
   }
+};
+
+const reset = () => {
+  timer.innerHTML = '00:00.00';
+  [minutes, seconds, centi] = [0, 0, 0];
 }
 
-//this works
-function reset() {
-  clearInterval(interval);
-  miliseconds = 0;
-  seconds = 0;
-  minutes = 0;
-  hours = 0;
-  timerMilisec.innerHTML = "00";
-  timerSec.innerHTML = "00";
-  timerMins.innerHTML = "00";
-  timerHrs.innerHTML = "00";
-  startBtn.innerHTML = "Start";
-  lapRecord.innerHTML = '';
-  status = "stopped";
-}
 
 //need to fix my zero intervals
 function lap() {
-  lapNow = `<div class="lap">${hours} : ${minutes} : ${seconds}</div>`;
+  lapNow = `<div class="lap">${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')} : ${centi.toString().padStart(2, '0')}</div>`;
   lapRecord.innerHTML += lapNow;
 }
 
-function changeColor(){
-  //this will change color of our buttons
-}
+//this function will revert all of the colors back to the original
+/*function changeColor() {
+  //need to change from green start to red stop back and forth
+  //
+  const theToggle = document.getElementById("startBtn");
+  const toggleStatus = theToggle.dataset.status;
+  switch (toggleStatus) {
+    case "off":
+      theToggle.dataset.status = "on";
+      theToggle.style.color = "white";
+      theToggle.style.backgroundColor = "green";
+      break;
+    case "on":
+      theToggle.dataset.status = "off";
+      theToggle.style.color = "black";
+      theToggle.style.backgroundColor = "red";
+      break;
+  }
 
+}*/
 
 lapBtn.addEventListener('click', lap);
 startBtn.addEventListener('click', startStop);
