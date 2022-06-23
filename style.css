@@ -102,12 +102,12 @@
   
   .controls .resetBtn,
   .lapBtn {
-    background: rgb(94, 94, 94);
+    background: rgb(55, 54, 54);
     color: #fff;
   }
   
   .controls .startBtn {
-    background: rgb(6, 104, 6);
+    background: rgb(5, 92, 5);
     color: rgb(43, 218, 95);
   }
   
@@ -117,12 +117,7 @@
     color: red;
   }
   
-  .slider {
-    width: 25px;
-    height: 6px;
-    position: relative;
-  }
-  
+
   .lapsTracker {
     height: 300px;
     overflow: auto;
