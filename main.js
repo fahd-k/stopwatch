@@ -86,7 +86,9 @@ function updateLaps() {
     (lap, index) => `
      <div class="lap-data">
        <span>Lap ${index + 1}</span><span>${doubleDigits(lap.minutes)}:${doubleDigits(lap.seconds)}:${doubleDigits(lap.milliseconds)}</span>
-     </div>`
+     </div>
+     <hr>`
+     
   )
     .reverse()
     .join(" ");
