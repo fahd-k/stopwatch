@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   }
   
   body {
@@ -161,6 +161,10 @@
   .laps .lap-data span:nth-of-type(2) {
     font-variant-numeric: tabular-nums;
     text-align: right;
+  }
+
+  hr{
+    border-color: grey;
   }
 
 
